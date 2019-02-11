@@ -41,4 +41,11 @@ class Goods extends Controller
         $goods = new \app\index\model\Goods();
         return 'add';
     }
+    public function id () {
+        $goods = new \app\index\model\Goods();
+        $id = $_GET['id'];
+//        $id = 1;
+        $goodInfo = $goods ->where('id','=',$id) -> select();
+        return json($goodInfo);
+    }
 }
