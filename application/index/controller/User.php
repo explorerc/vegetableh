@@ -10,6 +10,7 @@ namespace app\index\controller;
 
 
 use think\Controller;
+use think\Db;
 
 class User extends Controller
 {
@@ -40,6 +41,31 @@ class User extends Controller
     return '成功';
  }
  public function update(){
-    return '成功';
+//     $userInfo = $_GET['userInfo'];
+     $id = $_GET['id'];
+     $userInfo['name'] = $_GET['name'];
+     $userInfo['nickname'] = $_GET['nickname'];
+     $userInfo['tel'] = $_GET['tel'];
+     $userInfo['address1'] = $_GET['address1'];
+     $userInfo['birth'] = $_GET['birth'];
+     $user = new \app\index\model\User();
+//     $id = 1;
+//     $userInfo['name'] = 'cq';
+//     $userInfo['nickname'] = 'kiki1';
+//     $userInfo['tel'] = '1234567890';
+//     $userInfo['address1'] = '北京啦啦';
+//     $userInfo['birth'] ='2018/11/11';
+     $res = $user
+         ->where('id','=', $id)
+//         ->select();
+         ->update($userInfo);
+     return json($res);
+ }
+ public function id () {
+     $userId = $_GET['userId'];
+//     $userId = 1;
+     $user = new \app\index\model\User();
+     $userInfo = $user -> where('id', '=',$userId) -> select();
+     return json($userInfo);
  }
 }

@@ -12,6 +12,7 @@
 \think\Route::get('/index/index','index/index/index');
 
 \think\Route::get('/user','index/user/getAll');
+\think\Route::get('/user/id','index/user/id');
 \think\Route::get('/user/add','index/user/add');
 \think\Route::get('/user/delete','index/user/delete');
 \think\Route::get('/user/update','index/user/update');
