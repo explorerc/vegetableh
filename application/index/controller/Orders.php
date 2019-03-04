@@ -29,6 +29,5 @@ class Orders extends Controller
      $orders = new \app\index\model\Orders();
      $res = $orders -> where('id','=',$id) -> delete();
      return json($res);
-//     return json(chengeong);
  }
 }

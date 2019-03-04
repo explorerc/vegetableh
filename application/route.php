@@ -38,6 +38,14 @@
 \think\Route::get('/orders/delete','index/orders/delete');
 \think\Route::get('/orders/update','index/orders/update');
 
+\think\Route::get('/mage/info','index/mage/info');  // 根据用户id查询购物车中的信息
+\think\Route::get('/mage','index/mage/getAll'); // 管理员查看所有购物车信息
+\think\Route::get('/mage/add','index/mage/add'); // 新增cart（购物车）记录
+\think\Route::get('/mage/delete','index/mage/delete');
+\think\Route::get('/mage/update','index/mage/update');
+\think\Route::get('/mage/login','index/mage/login'); //管理员登录
+
+
 
 
 return [
