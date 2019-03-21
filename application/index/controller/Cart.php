@@ -49,11 +49,11 @@ class Cart extends Controller
     public function add () {
         $userId = $_GET['userId'];
         $goodId = $_GET['goodId'];
-        $number = $_GET['number'];
+        $newNumber = $_GET['number'];
         $cart = new \app\index\model\Cart();
         // 测试用
 //        $userId = 1;
-//        $goodId = 80;
+//        $goodId = 20;
 //        $number = 1;
         // 判断该商品是否已经加入购物车
         $map['userId']= $userId;
