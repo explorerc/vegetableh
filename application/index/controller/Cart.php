@@ -17,15 +17,20 @@ class Cart extends Controller
     public function info (){
 //        $map['w.id']= $_GET['userId'];
 //        $map['w.userId']= $_GET['userId'];
+        //方法一
         $map['w.userId']= 1;
         $info = Db::table('goods')
             ->alias('a')
             ->join('cart w','a.id = w.goodId')
             ->where($map)
             ->select();
+
+//        $cart = new \app\index\model\Cart();
+//        $info = $cart->where()
         return json($info);
     }
     public function addNum () {
+        // 方法一
         $id = 1;
         $map['goodId'] = 20;
         Db::table('cart')
@@ -33,9 +38,13 @@ class Cart extends Controller
             ->update([
                 'number' => Db::raw('number+1')
             ]);
+        // 方法二
+        $cart = new \app\index\model\Cart();
+        $cart->save(['number'=>Db::raw('number+1')], ['id' => $id]);
         return json();
     }
     public function minNum () {
+        // 方法一
         $id = 1;
         $map['goodId'] = 20;
         Db::table('cart')
@@ -43,6 +52,9 @@ class Cart extends Controller
             ->update([
                 'number' => Db::raw('number-1')
             ]);
+        // 方法二
+        $cart = new \app\index\model\Cart();
+        $cart->save(['number'=>Db::raw('number-1')], ['id' => $id]);
         return json();
     }
     // 增加cart表的数据
@@ -62,11 +74,15 @@ class Cart extends Controller
         // 该用户的购物车已有该商品
         if (count($cartInfo)>0) {
             $newNumber = $cartInfo[0]['number'] + $number;
-            $addRes = Db::table('cart')
-                ->where('id', $cartInfo[0]['id'])
-                ->update([
-                    'number' => Db::raw($newNumber)
-                ]);
+            // 方法一
+//            $addRes = Db::table('cart')
+//                ->where('id', $cartInfo[0]['id'])
+//                ->update([
+//                    'number' => Db::raw($newNumber)
+//                ]);
+            // 方法二
+            $cart = new \app\index\model\Cart();
+            $addRes = $cart -> save(['number'=>Db::raw($newNumber)], ['id' =>  $cartInfo[0]['id']]);
             if ($addRes) {
                 return '改变商品的数量成功';
             } else {
