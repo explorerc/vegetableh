@@ -18,6 +18,7 @@
 \think\Route::get('/user/update','index/user/update');
 
 \think\Route::get('/goods','index/goods/getAll');
+\think\Route::get('/goods/page','index/goods/getByPage');
 \think\Route::get('/goods/add','index/goods/add');
 \think\Route::get('/goods/delete','index/goods/delete');
 \think\Route::get('/goods/update','index/goods/update');
