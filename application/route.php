@@ -47,6 +47,15 @@
 \think\Route::get('/mage/login','index/mage/login'); //管理员登录
 
 
+// 分类
+//\think\Route::get('/kind/info','index/kind/info');
+\think\Route::get('/kind','index/kind/getAll'); // 获取所有的分类信息
+\think\Route::get('/kind/page','index/kind/getByPage'); // 获取所有的分类信息（分页）
+\think\Route::get('/kind/add','index/kind/add'); // 新增kind（分类）记录
+\think\Route::get('/kind/delete','index/kind/delete'); // 新增kind（分类）记录
+\think\Route::get('/kind/update','index/kind/update'); // 更新分类名称
+
+
 
 
 return [

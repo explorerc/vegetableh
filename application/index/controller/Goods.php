@@ -37,11 +37,11 @@ class Goods extends Controller
 //        $pageSize = 10;
         $start = ($page-1)*$pageSize;
         $good = new \app\index\model\Goods();
-        $gooodsInfo['info'] = $good ->limit($start, $pageSize)-> select();
-        $gooodsInfo['total'] = $good -> count();
+        $goodsInfo['info'] = $good ->limit($start, $pageSize)-> select();
+        $goodsInfo['total'] = $good -> count();
 //        $data = new Data1();
 //        $data -> goodsInfo = $$gooodsInfo;
-        return json($gooodsInfo);
+        return json($goodsInfo);
     }
     public function add (){
         $goods = new \app\index\model\Goods();
@@ -54,8 +54,18 @@ class Goods extends Controller
         }
     }
     public function delete (){
-        $goods = new \app\index\model\Goods();
-        return 'add';
+        $id = 100;
+        if (!$id) {
+            $res['data'] = null;
+            $res['code'] = 201;
+            $res['msg'] = '参数错误';
+            return json($res);
+        }
+        $good = new \app\index\model\Goods();
+        $res['data'] = $good ->where('id','=',$id) -> delete();
+        $res['msg'] = 'success';
+        $res['code'] = 200;
+        return json($res);
     }
     public function update (){
         $goods = new \app\index\model\Goods();
