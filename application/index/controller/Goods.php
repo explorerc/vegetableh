@@ -30,6 +30,15 @@ class Goods extends Controller
        $goodsInfo = $goods -> select();
        return json($goodsInfo);
     }
+    // 关键字搜索
+    public function key (){
+        $key = $_GET['key'];
+//        return json($key);
+//        $key = '有机';
+        $goods = new \app\index\model\Goods();
+        $goodsInfo = $goods -> where('name','like','%'.$key.'%')-> select();
+        return json($goodsInfo);
+    }
     public function getByPage (){
         $page = $_GET['page'];
         $pageSize = $_GET['pageSize'];
@@ -69,6 +78,15 @@ class Goods extends Controller
     }
     public function update (){
         $goods = new \app\index\model\Goods();
+        $id = $_GET['id'];
+        $good['name'] = $_GET['name'];
+        $good['kindId'] = $_GET['kindId'];
+        $good['imgUrl'] = $_GET['imgUrl'];
+        $good['price'] = $_GET['price'];
+        $good['disPrice'] = $_GET['disPrice'];
+        $good['isBuy'] = $_GET['idBuy'];
+        $good['inventory'] = $_GET['inventory'];
+        $res['data'] = $goods -> where('id','=',$id) ->update($good);
         return 'add';
     }
     public function id () {

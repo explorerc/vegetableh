@@ -18,6 +18,7 @@
 \think\Route::get('/user/update','index/user/update');
 
 \think\Route::get('/goods','index/goods/getAll');
+\think\Route::get('/goods/key','index/goods/key');
 \think\Route::get('/goods/page','index/goods/getByPage');
 \think\Route::get('/goods/add','index/goods/add');
 \think\Route::get('/goods/delete','index/goods/delete');
@@ -55,7 +56,9 @@
 \think\Route::get('/kind/delete','index/kind/delete'); // 新增kind（分类）记录
 \think\Route::get('/kind/update','index/kind/update'); // 更新分类名称
 
-
+// 聊天（联系卖家）
+\think\Route::get('/chat/info','index/chat/info'); // 获取聊天记录
+\think\Route::get('/kind/add','index/chat/add'); // 聊天发言
 
 
 return [
